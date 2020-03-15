@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/rgk-slider.css" />
+
+    <style>
+        .rgk-slider {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>
+        <button type="button" onclick="rgkSlider(slider, 'move', 'prev');">Move prev</button>
+        <button type="button" onclick="rgkSlider(slider, 'move', 'next');">Move next</button>
+        <button type="button" onclick="rgkSlider(slider, 'move', 'active');">Move to active</button>
+        <button type="button" onclick="rgkSlider(slider, 'move', 'first');">Move to first</button>
+        <button type="button" onclick="rgkSlider(slider, 'move', 'last');">Move to last</button>
+
+        <button type="button" onclick="rgkSlider(slider, 'move', document.getElementById('inputMoveTo').value);">Move to </button> <input id="inputMoveTo" type="number" value="0">
+    </p>
+    <p>
+        <button type="button" onclick="document.querySelector('.rgk-slider__slides').insertAdjacentHTML('beforeend', '<div class=&quot;rgk-slider__slide&quot; data-title=&quot;Slide n&quot;><span class=&quot;img&quot;><img src=&quot;http://placehold.it/200x150/f17329/000&text=12&quot; width=&quot;200&quot; /></span></div>');">Add slide</button>
+        <button type="button" onclick="rgkSlider(slider, 'update');">Update</button>
+        <button type="button" onclick="rgkSlider(slider, 'destroy');">Destroy</button>
+        <button type="button" onclick="rgkSlider(document.getElementById('carousel1'), 'destroy');">Destroy1</button>
+        <button type="button" onclick="rgkSlider(document.getElementById('carousel2'), 'destroy');">Destroy2</button>
+    </p>
+    <p>
+        <button type="button" onclick="rgkSlider(slider);">Init</button>
+        <button type="button" onclick="rgkSlider(document.getElementById('carousel1'));">Init1</button>
+        <button type="button" onclick="rgkSlider(document.getElementById('carousel2'));">Init2</button>
+    </p>
+    <p>
+        <span id="sliderStatus"></span> - <span id="sliderPosition">0</span>
+    </p>
+
+    <!--rgk-slider-->
+    <div id="carousel" class="rgk-slider" data-ride="slider">
+
+        <!--rgk-slider__container-->
+        <div class="rgk-slider__container">
+
+            <!--rgk-slider__slides-->
+            <div class="rgk-slider__slides">
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 0">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=O" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 1">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=1" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide is-active" data-title="Slide 2">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=active" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 3">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=3" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 4">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=4" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 5">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=5" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 6">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=6" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 7">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=7" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 8">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=8" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 9">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=9" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 10">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=10" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 11">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=11" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 12">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=12" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+            </div>
+            <!--/rgk-slider__slides-->
+
+        </div>
+        <!--/rgk-slider__container-->
+
+        <button data-slide="prev" class="rgk-slider__control rgk-slider__control--prev" title="Prev slide" type="button">Prev slide</button>
+        <button data-slide="next" class="rgk-slider__control rgk-slider__control--next" title="Next slide" type="button">Next slide</button>
+        <div data-slide="page" class="rgk-slider__pager"></div>
+
+    </div>
+    <!--/rgk-slider-->
+
+    <!--rgk-slider-->
+    <div id="carousel1" class="rgk-slider" data-ride="slider">
+
+        <!--rgk-slider__container-->
+        <div class="rgk-slider__container">
+
+            <!--rgk-slider__slides-->
+            <div class="rgk-slider__slides">
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 0">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=O" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 1">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=1" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide is-active" data-title="Slide 2">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=active" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 3">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=3" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 4">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=4" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 5">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=5" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 6">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=6" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 7">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=7" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 8">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=8" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 9">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=9" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 10">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=10" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 11">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=11" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 12">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=12" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+            </div>
+            <!--/rgk-slider__slides-->
+
+        </div>
+        <!--/rgk-slider__container-->
+
+        <button data-slide="prev" class="rgk-slider__control rgk-slider__control--prev" title="Prev slide" type="button">Prev slide</button>
+        <button data-slide="next" class="rgk-slider__control rgk-slider__control--next" title="Next slide" type="button">Next slide</button>
+        <div data-slide="page" class="rgk-slider__pager"></div>
+
+    </div>
+    <!--/rgk-slider-->
+
+    <!--rgk-slider-->
+    <div id="carousel2" class="rgk-slider" data-ride="slider">
+
+        <!--rgk-slider__container-->
+        <div class="rgk-slider__container">
+
+            <!--rgk-slider__slides-->
+            <div class="rgk-slider__slides">
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 0">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=O" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 1">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=1" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide is-active" data-title="Slide 2">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=active" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 3">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=3" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 4">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=4" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 5">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=5" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 6">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=6" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 7">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=7" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 8">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/3f8bb9/fff&text=8" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 9">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/ed1c26/fff&text=9" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 10">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/dddddd/333&text=10" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 11">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/6aae44/fff&text=11" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+                <!--rgk-slider__slide-->
+                <div class="rgk-slider__slide" data-title="Slide 12">
+                    <span class="img">
+                        <img src="http://placehold.it/200x150/f17329/000&text=12" alt="" width="200" />
+                    </span>
+                </div>
+                <!--/rgk-slider__slide-->
+
+            </div>
+            <!--/rgk-slider__slides-->
+
+        </div>
+        <!--/rgk-slider__container-->
+
+        <button data-slide="prev" class="rgk-slider__control rgk-slider__control--prev" title="Prev slide" type="button">Prev slide</button>
+        <button data-slide="next" class="rgk-slider__control rgk-slider__control--next" title="Next slide" type="button">Next slide</button>
+        <div data-slide="page" class="rgk-slider__pager"></div>
+
+    </div>
+    <!--/rgk-slider-->
+
+
+
+    <script src="js/rgk.slider.js"></script>
+
+    <script>
+        var slider = document.getElementById('carousel');
+
+        slider.addEventListener('ready.rgk.slider', function(e) {
+            document.getElementById('sliderStatus').innerHTML = 'ready';
+            document.getElementById('sliderPosition').innerHTML = e.detail.position;
+        });
+
+        slider.addEventListener('change.rgk.slider', function(e) {
+            document.getElementById('sliderStatus').innerHTML = 'change';
+            document.getElementById('sliderPosition').innerHTML = 'pos: ' + e.detail.position + ', prev: ' + e.detail.previous + ', dir: ' + e.detail.direction;
+        });
+
+        rgkSlider('[data-ride="slider"]');
+    </script>
+</body>
+</html>

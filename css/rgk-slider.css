@@ -1,0 +1,88 @@
+/*
+    rgk-slider
+    Ivan Kolesnikov, myivanko@gmail.com
+    Version: 14.08.19
+*/
+
+.rgk-slider {
+    display: flex;
+    flex-direction: column;
+    /*height: 100%;*/
+    padding-left: 40px;
+    padding-right: 40px;
+    position: relative;
+}
+
+.rgk-slider__container {
+    height: 100%;
+    overflow: hidden;
+}
+.rgk-slider__slides {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+    -webkit-transition: -webkit-transform .35s ease;
+            transition:         transform .35s ease;
+}
+.rgk-slider__slides.is-swiping {
+    -webkit-transition-timing-function: step-start;
+            transition-timing-function: step-start;
+}
+.rgk-slider__slide {
+    flex-shrink: 0;
+    height: 100%;
+    /*width: 100%;*/
+}
+
+.rgk-slider__control {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border: 0;
+    background: none;
+    color: #333;
+    font-size: 0;
+    line-height: 40px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: color .35s ease;
+            transition: color .35s ease;
+}
+.rgk-slider__control::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    margin: -25% 0 0 -25%;
+    border: 2px solid;
+    border-width: 2px 2px 0 0;
+    content: "";
+}
+.rgk-slider__control:hover {
+    color: #669cff;
+}
+.rgk-slider__control.is-disabled {
+    color: #999;
+    opacity: 0.1;
+    cursor: default;
+}
+.rgk-slider__control--prev {
+    left: 0;
+}
+.rgk-slider__control--prev::before {
+    -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+}
+.rgk-slider__control--next {
+    right: 0;
+}
+.rgk-slider__control--next::before {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
